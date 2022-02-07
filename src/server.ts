@@ -9,6 +9,7 @@ import morganMiddleware from "./middlewares/morgan";
 
 // importing utilities
 import Logger from './utils/logger';
+import timestamp from './utils/timestamp';
 
 // declaring the environment config
 dotenv.config();
@@ -30,8 +31,10 @@ app.get("/", (req: Request, res: Response) => {
 
 // routes
 
+
 // exposing the server on assigned port number.
 app.listen(port, () => {
   Logger.info(`Listening on port ${port}`);
   databaseConnection();
+  Logger.debug(timestamp());
 });
